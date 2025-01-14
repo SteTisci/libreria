@@ -1,7 +1,16 @@
 <?php
+require_once __DIR__ . '\vendor\autoload.php';
 require_once "Database.php";
 
-$database = new Database("localhost", "root", "Cespuglio1234", "libreria");
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+$host = $_ENV['DB_HOST'];
+$username = $_ENV['DB_USERNAME'];
+$password = $_ENV['DB_PASSWORD'];
+$dbName = $_ENV['DB_NAME'];
+
+$database = new Database($host, $username, $password, $dbName);
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $titolo = str_replace(" ", "", $_POST["titolo"]);
