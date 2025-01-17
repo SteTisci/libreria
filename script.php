@@ -14,13 +14,14 @@ $database = new Database($host, $username, $password, $dbName);
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $titolo = str_replace(" ", "", $_POST["titolo"]);
+    $autore = $_POST['autore'] ?? "";
 
     try {
         // Inizializzazione cURL per mandare richiesta GET all'API Google books
         $curlSES = curl_init();
 
         // Configurazione richiesta, viene passato il titolo come parametro al link
-        curl_setopt($curlSES, CURLOPT_URL, "https://www.googleapis.com/books/v1/volumes?q=" . urlencode($titolo));
+        curl_setopt($curlSES, CURLOPT_URL, "https://www.googleapis.com/books/v1/volumes?q=" . urlencode($titolo) . urlencode($autore));
         curl_setopt($curlSES, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curlSES, CURLOPT_HEADER, false);
 
