@@ -75,7 +75,13 @@ form button {
     color: rgb(252, 93, 93);
 }
 
-.book-info .author {
+.book-info h4, 
+.book-info p {
     text-align: center;
+    overflow: hidden;
+    height: 20%;
+}
+
+.book-info .author {
     text-wrap: balance;
 }
