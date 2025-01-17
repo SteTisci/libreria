@@ -13,14 +13,15 @@ class Database
         }
     }
 
-    public function insert($titolo, $autore, $anno_pubblicazione)
+    public function insert($titolo, $autore, $anno_pubblicazione, $imgURL)
     {
         try {
-            $sql = "INSERT INTO libri (titolo, autore, anno_pubblicazione) VALUES (:titolo, :autore, :anno_pubblicazione)";
+            $sql = "INSERT INTO libri (titolo, autore, anno_pubblicazione, img) VALUES (:titolo, :autore, :anno_pubblicazione, :img)";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':titolo', $titolo);
             $stmt->bindParam(':autore', $autore);
             $stmt->bindParam(':anno_pubblicazione', $anno_pubblicazione);
+            $stmt->bindParam(':img', $imgURL);
             $stmt->execute();
 
         } catch (PDOException $e) {
@@ -30,7 +31,7 @@ class Database
 
     public function select()
     {
-        $sql = "SELECT id, titolo, autore, anno_pubblicazione FROM libri";
+        $sql = "SELECT id, titolo, autore, anno_pubblicazione, img FROM libri";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
 

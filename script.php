@@ -44,9 +44,10 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             $title = $volumeInfo['title'] ?? 'Titolo non disponibile';
             $authors = implode(', ', $volumeInfo['authors'] ?? ['Autore non disponibile']);
             $publishedDate = $volumeInfo['publishedDate'] ?? 'Data non disponibile';
+            $imgURL = $volumeInfo['imageLinks']['thumbnail'];
 
             // Inserimento dati nel database
-            $database->insert($title, $authors, $publishedDate);
+            $database->insert($title, $authors, $publishedDate, $imgURL);
 
         } else {
             throw new Exception("Nessun risultato trovato per il titolo: $titolo");

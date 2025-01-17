@@ -2,9 +2,12 @@
 require_once "script.php";
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Libreria</title>
 </head>
 
@@ -12,41 +15,15 @@ require_once "script.php";
     <h1>Gestione Libreria</h1>
 
     <form method="POST">
-        <input type="text" name="titolo" placeholder="Titolo" required>
-        <input type="text" name="autore" placeholder="Autore">
+        <div class="inputs">
+            <input type="text" name="titolo" placeholder="Titolo" required>
+            <input type="text" name="autore" placeholder="Autore">
+        </div>
         <button type="submit">Aggiungi Libro</button>
     </form>
-
-    <h2>Elenco Libri</h2>
-    <table border="1">
-        <tr>
-            <th>ID</th>
-            <th>Titolo</th>
-            <th>Autore</th>
-            <th>Anno</th>
-            <th>Azione</th>
-        </tr>
-
-        <?php
-        $data = $database->select();
-
-        if (!empty($data)) {
-            foreach ($data as $libro):
-                ?>
-                <tr>
-                    <td><?php echo $libro['id']; ?></td>
-                    <td><?php echo htmlspecialchars($libro['titolo']); ?></td>
-                    <td><?php echo htmlspecialchars($libro['autore']); ?></td>
-                    <td><?php echo htmlspecialchars($libro['anno_pubblicazione']); ?></td>
-                    <td>
-                        <a href="index.php?id=<?php echo $libro['id']; ?>">Elimina</a>
-                    </td>
-                </tr>
-            <?php endforeach;
-        }
-        $database->close();
-        ?>
-    </table>
+    <div class="books-container">
+        <?php include "bookCard.php" ?>
+    </div>
 </body>
 
 </html>
