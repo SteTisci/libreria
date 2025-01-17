@@ -1,0 +1,81 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 0 20px;
+    font-size: 2.2rem;
+} 
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.inputs {
+    margin-bottom: 10px;
+}
+
+.inputs input,
+form button {
+    height: 25px;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding: 0 7px;
+}
+
+.books-container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fill, 150px);
+    grid-auto-rows: 200px;
+    grid-auto-flow: row;  
+    gap: 10px;
+    margin: 50px;     
+}
+
+.bookCard {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    width: 150px;
+    height: 200px;
+    border-radius: 5px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.book-info {
+    height: 50%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 40%);
+    color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.book-info a {
+    text-decoration: none;
+    color: rgb(252, 93, 93);
+}
+
+.book-info .author {
+    text-align: center;
+    text-wrap: balance;
+}
